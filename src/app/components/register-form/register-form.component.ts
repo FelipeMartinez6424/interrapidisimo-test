@@ -11,7 +11,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { RegisterService } from '../../services/register/register.service';
+import { StudentsService } from '../../services/students/students.service';
 
 @Component({
   selector: 'app-register-form',
@@ -38,7 +38,7 @@ export class RegisterFormComponent {
 
   documentTypes: string[] = ['Cédula de Ciudadanía', 'Tarjeta de Identidad', 'Cédula de Extranjería'];
 
-  constructor(private fb: FormBuilder, private _register: RegisterService) {
+  constructor(private fb: FormBuilder, private _students: StudentsService) {
     this.registerForm = this.fb.group(
       {
         firstName: [
@@ -92,7 +92,7 @@ export class RegisterFormComponent {
         FechaNacimiento: this.registerForm.value.birthDate.startDate, // Ajustar si es necesario
       };
   
-      this._register.registerStudents(formData).subscribe({
+      this._students.registerStudents(formData).subscribe({
         next: (response) => {
           console.log('Usuario registrado con éxito:', response);
           alert('Registro exitoso');

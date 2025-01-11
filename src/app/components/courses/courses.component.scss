@@ -1,0 +1,38 @@
+.courses-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado vertical */
+    align-items: center; /* Centrado horizontal */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    text-align: center;
+  
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    button {
+      margin-top: 20px;
+    }
+  }
+  
+  .chip-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+    gap: 15px; /* Espaciado entre filas y columnas */
+    max-width: 800px; /* Ancho máximo para la cuadrícula */
+    margin: 0 auto; /* Centra horizontalmente la cuadrícula */
+  }
+  
+  mat-chip {
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+  
+    &.selected {
+      background-color: orange;
+      color: white;
+    }
+  }
+  

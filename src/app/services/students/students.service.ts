@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class StudentsService {
 
   constructor(
     private http: HttpClient, 
@@ -21,4 +21,9 @@ export class RegisterService {
       })
     );
   }
+  
+  getStudents(): Observable<any[]> {
+    return this.http.get<any[]>('https://localhost:7043/api/Estudiantes');
+  }
+  
 }
