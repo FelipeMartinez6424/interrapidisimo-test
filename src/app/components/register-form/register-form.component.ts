@@ -78,7 +78,9 @@ export class RegisterFormComponent {
       { validators: this.passwordsMatchValidator }
     );
   }
-
+  onCancel(): void {
+    this.router.navigate(['/login']);
+  }
   onSubmit(): void {
     if (this.registerForm.valid) {
       const formData = {
