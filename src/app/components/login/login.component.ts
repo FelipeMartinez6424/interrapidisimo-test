@@ -40,15 +40,15 @@ export class LoginComponent {
 
   onLogin(): void {
     if (this.loginForm.valid) {
-      const credentials = this.loginForm.value; // Captura el usuario y contraseña
+      const credentials = this.loginForm.value; 
       this._auth.login(credentials).subscribe({
         next: (response) => {
           if (response && response.cedula) {
-            // Guarda la cédula en el localStorage
+            
             localStorage.setItem('userId', response.cedula);
-  
-            // Navega a la página de inicio
-            this.router.navigate(['/student-list']);
+            this._auth.setLoggedUser(response.cedula);
+            
+            this.router.navigate(['/home']);
           } else {
             alert('Error: No se pudo obtener la cédula del usuario.');
           }

@@ -18,11 +18,35 @@ import { MatChipsModule } from '@angular/material/chips';
 export class CoursesComponent implements OnInit {
   subjects: { id: number; nombre: string; profesorId: number }[] = [];
   selectedSubjects: { id: number; nombre: string; profesorId: number }[] = [];
+  isDisabled: boolean = false;
 
   constructor(private _courses: CoursesService) {}
 
   ngOnInit(): void {
-    this.loadMaterias();
+    this.checkIfUserHasRegisteredCourses();
+  }
+
+  // Verificar si el usuario tiene materias registradas
+  checkIfUserHasRegisteredCourses(): void {
+    const userCedula = localStorage.getItem('userId');
+    if (!userCedula) {
+      alert('Error: No se encontró la cédula del usuario. Por favor, inicia sesión.');
+      return;
+    }
+
+    this._courses.hasRegisteredCourses(userCedula).subscribe({
+      next: (hasCourses: boolean) => {
+        this.isDisabled = hasCourses;
+        if (!this.isDisabled) {
+          this.loadMaterias();
+        } else {
+          alert('Ya tienes materias registradas. No puedes registrar más materias.');
+        }
+      },
+      error: (err) => {
+        console.error('Error al verificar las materias registradas:', err);
+      },
+    });
   }
 
   // Cargar materias desde el backend
@@ -30,7 +54,7 @@ export class CoursesComponent implements OnInit {
     this._courses.getCourses().subscribe({
       next: (data: any) => {
         this.subjects = data.$values;
-        console.log("subjects ->",data.$values)
+        console.log("subjects ->", data.$values);
       },
       error: (err) => {
         console.error('Error al cargar las materias:', err);
@@ -39,7 +63,6 @@ export class CoursesComponent implements OnInit {
   }
 
   toggleSelection(subject: { id: number; nombre: string; profesorId: number }): void {
-    console.log("subject -> ", subject)
     const index = this.selectedSubjects.findIndex((s) => s.id === subject.id);
 
     if (index >= 0) {
@@ -53,10 +76,10 @@ export class CoursesComponent implements OnInit {
     return this.selectedSubjects.some((s) => s.id === subject.id);
   }
 
-  isDisabled(subject: { id: number; nombre: string; profesorId: number }): boolean {
+  isDisabledSubject(subject: { id: number; nombre: string; profesorId: number }): boolean {
     return (
       this.selectedSubjects.length >= 3 ||
-      this.selectedSubjects.some((s) => s.profesorId === subject.profesorId && subject.id != s.id)
+      this.selectedSubjects.some((s) => s.profesorId === subject.profesorId && subject.id !== s.id)
     );
   }
 
@@ -66,15 +89,16 @@ export class CoursesComponent implements OnInit {
       alert('Error: No se encontró la cédula del usuario. Por favor, inicia sesión.');
       return;
     }
-  
+
     const payload = {
-      cedula: userCedula, 
-      materias: this.selectedSubjects.map((s) => s.id), 
+      cedula: userCedula,
+      materias: this.selectedSubjects.map((s) => s.id),
     };
-  
+
     this._courses.registerCourses(payload).subscribe({
       next: () => {
         alert('Materias registradas exitosamente.');
+        this.isDisabled = true; // Deshabilitar el formulario tras el registro
       },
       error: (err) => {
         console.error('Error al registrar materias:', err);
@@ -82,5 +106,5 @@ export class CoursesComponent implements OnInit {
       },
     });
   }
-  
 }
+

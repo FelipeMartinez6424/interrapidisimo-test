@@ -1,0 +1,50 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .welcome-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #c65f07;
+    margin-bottom: 1rem;
+  }
+  
+  .welcome-message {
+    font-size: 1.2rem;
+    color: #000;
+    margin-bottom: 2rem;
+  }
+  
+  .instructions-list {
+    list-style-type: none;
+    padding: 0;
+  
+    li {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #000;
+      line-height: 1.6;
+  
+      strong {
+        color: #c65f07;
+      }
+  
+      .link {
+        color: #c65f07;
+        text-decoration: underline;
+        cursor: pointer;
+  
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  

@@ -1,14 +1,13 @@
 <div class="student-list-container">
+  <div class="student-list-container__header">
     <h1>Lista de Estudiantes</h1>
-  
-   
     <div class="filter-container">
       <mat-form-field appearance="outline">
         <mat-label>Filtrar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Buscar estudiante">
       </mat-form-field>
     </div>
-  
+  </div>
    
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
   

@@ -1,0 +1,78 @@
+.student-list-container {
+    padding: 50px;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.student-list-container__header h1 {
+    color: #c65f07;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  
+  table.mat-elevation-z8 {
+    background-color: #000; 
+    color: #fff; 
+    border-collapse: collapse;
+    border-radius: 10px; 
+    overflow: hidden;
+    margin: 20px auto; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+  
+  
+  table.mat-elevation-z8 th,
+  table.mat-elevation-z8 td {
+    border: none; 
+    padding: 15px; 
+    text-align: left;
+    color: #fff; 
+  }
+  
+ 
+  table.mat-elevation-z8 th {
+    background-color: #c65f07; 
+    color: #fff; 
+    font-weight: bold;
+    text-transform: uppercase; 
+  }
+  
+
+  table.mat-elevation-z8 tr {
+    transition: background-color 0.3s;
+  }
+  
+
+  table.mat-elevation-z8 tr:hover {
+    background-color: #444; 
+    cursor: pointer; 
+  }
+  
+
+  table.mat-elevation-z8 tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+  
+  table.mat-elevation-z8 tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+  
+
+  mat-paginator {
+    color: #fff; 
+  }
+  
+  .mat-paginator-range-label,
+  .mat-paginator-page-size-label,
+  .mat-option-text {
+    color: #fff; 
+  }
+  
+  .mat-paginator-navigation-button {
+    color: #fff; 
+  }
+  

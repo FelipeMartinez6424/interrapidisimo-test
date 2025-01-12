@@ -1,10 +1,15 @@
-<mat-toolbar class="header">
-    <span class="header__logo" routerLinkActive="active" [routerLink]="['/register']">My Application</span>
+<mat-toolbar class="header" *ngIf="isLogged">
+    <span class="header__logo" routerLinkActive="active" [routerLink]="['/home']">
+    </span>
+    
     <ul class="header__menu">
-        <li routerLinkActive="active" [routerLink]="['/courses']">Mi perfil</li>
+        <li routerLinkActive="active" [routerLink]="['/home']">Home</li>
         <li routerLinkActive="active" [routerLink]="['/courses']">Registro de materias</li>
         <li routerLinkActive="active" [routerLink]="['/my-courses']">Mis materias</li>
         <li routerLinkActive="active" [routerLink]="['/student-list']">Estudiantes</li>
     </ul>
-    <button class="header__logout" mat-button routerLinkActive="active" [routerLink]="['/login']">Cerrar Sesion</button>
+
+    <button class="header__logout" mat-icon-button (click)="logout()" aria-label="Cerrar Sesión">
+        <mat-icon>logout</mat-icon>
+    </button>
 </mat-toolbar>

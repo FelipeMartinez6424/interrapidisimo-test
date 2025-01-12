@@ -11,6 +11,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsService } from '../../services/students/students.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -28,6 +29,7 @@ import { StudentsService } from '../../services/students/students.service';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    RouterModule
   ],
 })
 export class RegisterFormComponent {
@@ -37,7 +39,7 @@ export class RegisterFormComponent {
 
   documentTypes: string[] = ['Cédula de Ciudadanía', 'Tarjeta de Identidad', 'Cédula de Extranjería'];
 
-  constructor(private fb: FormBuilder, private _students: StudentsService) {
+  constructor(private fb: FormBuilder, private _students: StudentsService, private router: Router) {
     this.registerForm = this.fb.group(
       {
         firstName: [
@@ -95,6 +97,7 @@ export class RegisterFormComponent {
         next: (response) => {
           console.log('Usuario registrado con éxito:', response);
           alert('Registro exitoso');
+          this.router.navigate(['/login']);
         },
         error: (err) => {
           console.error('Error al registrar usuario:', err);

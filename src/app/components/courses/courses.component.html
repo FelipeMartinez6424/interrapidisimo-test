@@ -1,19 +1,21 @@
-<div class="courses-container">
+<div *ngIf="isDisabled" class="info-message">
+  <p>Ya tienes materias registradas. No puedes registrar más materias.</p>
+</div>
+
+<div *ngIf="!isDisabled" class="courses-container">
   <h1>Registro de Materias</h1>
 
-  <!-- Chips organizados en una cuadrícula -->
   <div class="chip-grid">
     <mat-chip
       *ngFor="let subject of subjects"
       (click)="toggleSelection(subject)"
       [class.selected]="isSelected(subject)"
-      [disabled]="isDisabled(subject)"
+      [disabled]="isDisabledSubject(subject)"
     >
       {{ subject.nombre }}
     </mat-chip>
   </div>
 
-  <!-- Botón de Guardar -->
   <button
     mat-raised-button
     color="primary"
@@ -23,6 +25,7 @@
     Guardar
   </button>
 </div>
+
 
 
 

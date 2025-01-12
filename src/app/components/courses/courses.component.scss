@@ -1,9 +1,9 @@
 .courses-container {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrado vertical */
-    align-items: center; /* Centrado horizontal */
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
     text-align: center;
   
     h1 {
@@ -18,7 +18,7 @@
   
   .chip-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 5 columnas */
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 
   }
@@ -28,7 +28,7 @@
   }
 
   mat-chip.selected {
-    background-color: #ff9800; /* Naranja */
+    background-color: #ff9800; 
     color: white;
     font-weight: bold;
   }
