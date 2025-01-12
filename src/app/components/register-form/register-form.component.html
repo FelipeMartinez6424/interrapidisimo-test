@@ -2,7 +2,7 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form__content">
     <h1 class="form__title">Registro de Usuario</h1>
 
-    <!-- Nombre y Apellido -->
+   
     <div class="form__row">
       <div class="form__field">
         <mat-form-field appearance="outline" class="form__field-input">
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <!-- Tipo y Número de Documento -->
+    
     <div class="form__row">
       <div class="form__field">
         <mat-form-field appearance="outline" class="form__field-input">
@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <!-- Correo -->
+    
     <div class="form__row">
       <div class="form__field">
         <mat-form-field appearance="outline" class="form__field-input">
@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <!-- Contraseña y Confirmar Contraseña -->
+    
     <div class="form__row">
       <div class="form__field">
         <mat-form-field appearance="outline" class="form__field-input">
@@ -104,7 +104,7 @@
       </div>
     </div>
 
-    <!-- Teléfono y Dirección -->
+    
     <div class="form__row">
       <div class="form__field">
         <mat-form-field appearance="outline" class="form__field-input">
@@ -131,7 +131,7 @@
       </div>
     </div>
 
-    <!-- Fecha de Nacimiento -->
+    
     <div class="form__row" formGroupName="birthDate">
       <div class="form__field">
         <mat-form-field appearance="outline" class="form__field-input">
@@ -149,7 +149,7 @@
       </div>
     </div>
 
-    <!-- Botón Enviar -->
+    
     <div class="form__row">
       <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
         Enviar

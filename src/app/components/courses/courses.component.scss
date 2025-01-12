@@ -18,21 +18,19 @@
   
   .chip-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
-    gap: 15px; /* Espaciado entre filas y columnas */
-    max-width: 800px; /* Ancho máximo para la cuadrícula */
-    margin: 0 auto; /* Centra horizontalmente la cuadrícula */
+    grid-template-columns: repeat(3, 1fr); /* 5 columnas */
+    gap: 10px;
+
   }
-  
+
   mat-chip {
-    font-size: 14px;
     cursor: pointer;
-    text-align: center;
-    padding: 10px;
-  
-    &.selected {
-      background-color: orange;
-      color: white;
-    }
   }
+
+  mat-chip.selected {
+    background-color: #ff9800; /* Naranja */
+    color: white;
+    font-weight: bold;
+  }
+  
   

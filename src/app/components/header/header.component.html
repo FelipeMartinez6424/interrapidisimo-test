@@ -1,3 +1,10 @@
-<mat-toolbar>
-    <span>My Application</span>
+<mat-toolbar class="header">
+    <span class="header__logo" routerLinkActive="active" [routerLink]="['/register']">My Application</span>
+    <ul class="header__menu">
+        <li routerLinkActive="active" [routerLink]="['/courses']">Mi perfil</li>
+        <li routerLinkActive="active" [routerLink]="['/courses']">Registro de materias</li>
+        <li routerLinkActive="active" [routerLink]="['/my-courses']">Mis materias</li>
+        <li routerLinkActive="active" [routerLink]="['/student-list']">Estudiantes</li>
+    </ul>
+    <button class="header__logout" mat-button routerLinkActive="active" [routerLink]="['/login']">Cerrar Sesion</button>
 </mat-toolbar>

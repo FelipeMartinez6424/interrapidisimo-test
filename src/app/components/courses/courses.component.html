@@ -1,26 +1,29 @@
 <div class="courses-container">
-    <h1>Registro de Materias</h1>
-  
-    <!-- Chips organizados en una cuadrícula -->
-    <div class="chip-grid">
-      <mat-chip
-        *ngFor="let subject of subjects"
-        (click)="toggleSelection(subject)"
-        [class.selected]="isSelected(subject)"
-        [disabled]="!isSelected(subject) && selectedSubjects.length >= 3"
-      >
-        {{ subject }}
-      </mat-chip>
-    </div>
-  
-    <!-- Botón de Guardar -->
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="selectedSubjects.length !== 3"
-      (click)="onSubmit()"
+  <h1>Registro de Materias</h1>
+
+  <!-- Chips organizados en una cuadrícula -->
+  <div class="chip-grid">
+    <mat-chip
+      *ngFor="let subject of subjects"
+      (click)="toggleSelection(subject)"
+      [class.selected]="isSelected(subject)"
+      [disabled]="isDisabled(subject)"
     >
-      Guardar
-    </button>
+      {{ subject.nombre }}
+    </mat-chip>
   </div>
+
+  <!-- Botón de Guardar -->
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="selectedSubjects.length !== 3"
+    (click)="onSubmit()"
+  >
+    Guardar
+  </button>
+</div>
+
+
+
   

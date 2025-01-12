@@ -10,7 +10,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { StudentsService } from '../../services/students/students.service';
 
 @Component({
@@ -109,7 +108,7 @@ export class RegisterFormComponent {
   }
   
 
-  // Validación personalizada para fecha de nacimiento
+  
   validateBirthDate(control: AbstractControl): { [key: string]: boolean } | null {
     const inputDate = new Date(control.value);
     const today = new Date();
@@ -119,7 +118,7 @@ export class RegisterFormComponent {
     return null;
   }
 
-  // Validación personalizada para contraseñas iguales
+  
   passwordsMatchValidator(group: AbstractControl): { [key: string]: boolean } | null {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
@@ -131,7 +130,7 @@ export class RegisterFormComponent {
     return null;
   }
 
-  // Funciones para alternar visibilidad de contraseñas
+ 
   togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
   }

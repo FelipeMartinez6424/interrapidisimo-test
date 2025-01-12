@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -39,12 +40,24 @@ export class LoginComponent {
 
   onLogin(): void {
     if (this.loginForm.valid) {
-      const credentials = this.loginForm.value;
-      this._auth.login(credentials).subscribe(response => {
-
-        console.log("logueado!")
-
-      })
+      const credentials = this.loginForm.value; // Captura el usuario y contraseña
+      this._auth.login(credentials).subscribe({
+        next: (response) => {
+          if (response && response.cedula) {
+            // Guarda la cédula en el localStorage
+            localStorage.setItem('userId', response.cedula);
+  
+            // Navega a la página de inicio
+            this.router.navigate(['/student-list']);
+          } else {
+            alert('Error: No se pudo obtener la cédula del usuario.');
+          }
+        },
+        error: (err) => {
+          console.error('Error al iniciar sesión:', err);
+          alert('Credenciales incorrectas.');
+        },
+      });
     } else {
       alert('Por favor, completa todos los campos.');
     }
@@ -52,7 +65,7 @@ export class LoginComponent {
   
 
   onRegister(): void {
-    // Lógica para redirigir al formulario de registro
+   
     this.router.navigate(['/register']);
   }
 }

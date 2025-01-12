@@ -53,9 +53,10 @@ export class StudentListComponent implements OnInit {
 
   fetchStudents(): void {
     this._student.getStudents().subscribe({
-      next: (data) => {
+      next: (data: any) => {
+        console.log("data ->", data)
         console.log(data)
-        this.dataSource.data = data;
+        this.dataSource.data = data.$values;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
