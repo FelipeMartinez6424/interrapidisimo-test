@@ -13,20 +13,21 @@ export class CoursesService {
   getCourses(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
-  hasRegisteredCourses(cedula: string): Observable<boolean> {
-    return this.http.get<boolean>(`https://localhost:7043/api/Materias/HasRegisteredCourses/${cedula}`);
+  hasRegisteredCourses(userCedula: string): Observable<boolean> {
+    return this.http.get<boolean>(`https://localhost:7043/api/Materias/HasRegisteredCourses/${userCedula}`).pipe(
+      
+    );
   }
-
   registerCourses(payload: { cedula: string; materias: number[] }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/RegistrarMaterias`, payload);
+    return this.http.post(`${this.apiUrl}/RegisterCourses`, payload);
   }
 
   getCoursesByUser(cedula: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/MateriasdelUsuario/${cedula}`);
+    return this.http.get<any[]>(`${this.apiUrl}/CoursesofStudents/${cedula}`);
   }
 
-  getUsersByCourses(materiaId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/UsuariosPorMateria/${materiaId}`);
+  getUsersByCourses(materiaId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/StudentforCourses/${materiaId}`);
   }
 
 }

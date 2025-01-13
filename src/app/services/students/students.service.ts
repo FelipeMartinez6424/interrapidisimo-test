@@ -14,7 +14,7 @@ export class StudentsService {
     private router: Router) { }
 
   registerStudents(students: any): Observable<any> {
-    return this.http.post('https://localhost:7043/api/Estudiantes', students).pipe(
+    return this.http.post('https://localhost:7043/api/Studenst', students).pipe(
       catchError((error: any) => {
         console.log("error")
         return throwError(() => new Error('Error en el post del estudiante'));
@@ -23,7 +23,7 @@ export class StudentsService {
   }
   
   getStudents(): Observable<any[]> {
-    return this.http.get<any[]>('https://localhost:7043/api/Estudiantes');
+    return this.http.get<any[]>('https://localhost:7043/api/Studenst');
   }
   
 }

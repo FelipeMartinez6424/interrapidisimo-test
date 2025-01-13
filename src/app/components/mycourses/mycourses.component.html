@@ -1,16 +1,18 @@
-<mat-accordion>
-    <mat-expansion-panel *ngFor="let course of userCourses">
-      <mat-expansion-panel-header (click)="getStudents(course.$id)">
+<div class="cont-my-courses">
+  <h1>Mis Materias</h1>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let course of userCourses" (opened)="getStudents(course.materiaId)">
+      <mat-expansion-panel-header>
         <mat-panel-title>{{ course.materiaNombre }}</mat-panel-title>
         <mat-panel-description>Profesor: {{ course.profesorNombre }}</mat-panel-description>
       </mat-expansion-panel-header>
       <p>Otros estudiantes matriculados en esta materia:</p>
       <ul>
+        
         <li *ngFor="let student of courseStudent">
-          {{ student.nombre }} {{ student.apellido }}
+          {{ student.estudianteNombre }} {{ student.estudianteApellido }}
         </li>
       </ul>
     </mat-expansion-panel>
   </mat-accordion>
-  
-  
+</div>

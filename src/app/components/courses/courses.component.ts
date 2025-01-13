@@ -26,41 +26,51 @@ export class CoursesComponent implements OnInit {
     this.checkIfUserHasRegisteredCourses();
   }
 
-  // Verificar si el usuario tiene materias registradas
+  
   checkIfUserHasRegisteredCourses(): void {
     const userCedula = localStorage.getItem('userId');
     if (!userCedula) {
       alert('Error: No se encontró la cédula del usuario. Por favor, inicia sesión.');
       return;
     }
-
+  
     this._courses.hasRegisteredCourses(userCedula).subscribe({
       next: (hasCourses: boolean) => {
         this.isDisabled = hasCourses;
         if (!this.isDisabled) {
+         
           this.loadMaterias();
         } else {
+          
           alert('Ya tienes materias registradas. No puedes registrar más materias.');
         }
       },
       error: (err) => {
         console.error('Error al verificar las materias registradas:', err);
+        alert('Ocurrió un error al verificar las materias registradas.');
       },
     });
   }
-
-  // Cargar materias desde el backend
+  
   loadMaterias(): void {
     this._courses.getCourses().subscribe({
       next: (data: any) => {
-        this.subjects = data.$values;
-        console.log("subjects ->", data.$values);
+        if (Array.isArray(data)) {
+          this.subjects = data; 
+        } else if (data.$values) {
+          this.subjects = data.$values; 
+        } else {
+          console.error('Los datos devueltos no son un arreglo:', data);
+          this.subjects = []; 
+        }
       },
       error: (err) => {
         console.error('Error al cargar las materias:', err);
+        this.subjects = []; 
       },
     });
   }
+  
 
   toggleSelection(subject: { id: number; nombre: string; profesorId: number }): void {
     const index = this.selectedSubjects.findIndex((s) => s.id === subject.id);

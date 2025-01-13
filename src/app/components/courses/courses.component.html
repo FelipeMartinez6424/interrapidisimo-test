@@ -7,7 +7,7 @@
 
   <div class="chip-grid">
     <mat-chip
-      *ngFor="let subject of subjects"
+      *ngFor="let subject of subjects || []"
       (click)="toggleSelection(subject)"
       [class.selected]="isSelected(subject)"
       [disabled]="isDisabledSubject(subject)"
@@ -25,7 +25,6 @@
     Guardar
   </button>
 </div>
-
 
 
 
